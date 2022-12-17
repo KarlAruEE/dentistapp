@@ -23,20 +23,20 @@ public class DentistVisit {
     private Long id;
 
     @NotNull
-    private LocalDateTime time;
+    private LocalDateTime startTime;
 
-    @NotBlank
-    private String patient;
+    @NotNull
+    private LocalDateTime endTime;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="patient_id", referencedColumnName = "id")
+    private Patient patient;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="doctor_id", referencedColumnName = "id")
     private Doctor doctor;
 
-    public DentistVisit(LocalDateTime time, String patient, Doctor doctor) {
-        this(null, time, patient, doctor);
-    }
-
-    public DentistVisit(String patient) {
-        this(null, LocalDateTime.now(), patient,null);
+    public DentistVisit(LocalDateTime startTime, LocalDateTime endTime, Patient patient, Doctor doctor) {
+        this(null, startTime, endTime, patient, doctor);
     }
 }

@@ -2,6 +2,7 @@ package com.cgi.dentistapp;
 
 import com.cgi.dentistapp.entities.DentistVisit;
 import com.cgi.dentistapp.entities.Doctor;
+import com.cgi.dentistapp.entities.Patient;
 import com.cgi.dentistapp.entities.repositories.DentistVisitRepository;
 import com.cgi.dentistapp.entities.repositories.DoctorRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -23,8 +24,8 @@ public class StudyAppApplication {
 	public CommandLineRunner dataLoader(DentistVisitRepository dentistVisitRepository, DoctorRepository doctorRepository){
 		return args -> {
 			dentistVisitRepository.saveAll(List.of(
-					new DentistVisit(LocalDateTime.now(),"Anna Aru", new Doctor("Karl Aru")),
-					new DentistVisit(LocalDateTime.now(),"Kevin", new Doctor("Max Black"))));
+					new DentistVisit(LocalDateTime.now(),LocalDateTime.now(),new Patient("Liina"), new Doctor("Karl Aru")),
+					new DentistVisit(LocalDateTime.now(),LocalDateTime.now(),new Patient("Kalle"), new Doctor("Max Black"))));
 
 			doctorRepository.save(new Doctor("King Kong"));
 		};

@@ -6,8 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 
 @Entity
@@ -37,5 +40,9 @@ public class DentistVisit {
 
     public DentistVisit(LocalDateTime startTime, LocalDateTime endTime, Patient patient, Doctor doctor) {
         this(null, startTime, endTime, patient, doctor);
+    }
+
+    public LocalDate getDate(){
+        return this.startTime.toLocalDate();
     }
 }

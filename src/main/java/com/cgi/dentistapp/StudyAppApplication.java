@@ -24,10 +24,16 @@ public class StudyAppApplication {
 	public CommandLineRunner dataLoader(DentistVisitRepository dentistVisitRepository, DoctorRepository doctorRepository){
 		return args -> {
 			dentistVisitRepository.saveAll(List.of(
-					new DentistVisit(LocalDateTime.now(),LocalDateTime.now(),new Patient("Liina"), new Doctor("Karl Aru")),
-					new DentistVisit(LocalDateTime.now(),LocalDateTime.now(),new Patient("Kalle"), new Doctor("Max Black"))));
+					new DentistVisit(
+							LocalDateTime.now(),LocalDateTime.now(),
+							new Patient("Liina", "a@b.e"),
+							new Doctor("Karl Aru", "ab@as.ee")),
+					new DentistVisit(
+							LocalDateTime.now(),LocalDateTime.now(),
+							new Patient("Kalle", "b@c.f"),
+							new Doctor("Max Black", ""))));
 
-			doctorRepository.save(new Doctor("King Kong"));
+			doctorRepository.save(new Doctor("King Kong",""));
 		};
 	}
 }

@@ -26,15 +26,17 @@ public class Patient {
     @NotBlank
     private String name;
 
+    private String email;
+
     @OneToMany(mappedBy = "patient")
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private Set<DentistVisit> dentistVisit;
 
-    public Patient(Long id, String name){
-        this(id, name, null);
+    public Patient(Long id, String name, String email){
+        this(id, name, email,null);
     }
-    public Patient(String name){
-        this(null, name);
+    public Patient(String name, String email){
+        this(null, name, email);
     }
 }
